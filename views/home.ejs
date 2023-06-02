@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <header id="head">
+            <img id="logo" src="/images/logo.jpeg" alt="logo">
+        </header>
+        <div >
+            <label for="currency">
+                <select name="currency" class="drop_down" id="currency">
+                    <option value="inr">INR</option>
+                </select>
+            </label>
+
+            <label for="crypto">
+                <select name="crypto" class="drop_down" id="crypto">
+                    <option value="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                    <option value="XRP">XRP</option>
+                    <option value="WazirX">WazirX</option>
+                </select>
+            </label>
+            <button class="drop_down">BUY BTC</button>
+
+        </div>
+        <div id="sider">
+            <div>
+                <p id="timer">0</p>
+            </div>
+            <div class="telegram">
+                <img id="telegram_logo" src="/images/telegram.png" alt="telegram logo">
+                <span>Connect Telegram</span>
+            </div>
+            <div id="toggle">
+                <label class="switch">
+                    <input id="tick" type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <table>
+        <thead class="table_head">
+            <th>#</th>
+            <th>name</th>
+            <th>Last Traded Price</th>
+            <th>Buy / Sell Price</th>
+            <th>Difference</th>
+            <th>Savings</th>
+        </thead>
+        <tbody class="table_body">
+            <% let i=1; currency.forEach((data)=>{%>
+                <tr>
+                    <td><%= i++ %></td>
+                    <td><%= data.name %></td>
+                    <td><%= data.last %></td>
+                    <td><%= data.buy%> / <%=data.sell %></td>
+                    <td class="difference"><%= (data.buy - data.sell)/data.buy %> %</td>
+                    <td class="savings"><%= data.volume %></td>
+                </tr>
+            <%});%>
+        </tbody>
+    </table>
+    <script src="/js/home.js"></script>
+</body>
+</html>
